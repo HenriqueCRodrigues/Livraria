@@ -1,95 +1,91 @@
-<!doctype html>
-<html lang="{{ app()->getLocale() }}">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@include('util.header')
 
-        <title>Laravel</title>
+<!--End header include -->
 
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
+      <div id="pageContainer">
+         <div id="leftColumn">
+            <!--Begin menu include -->
 
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Raleway', sans-serif;
-                font-weight: 100;
-                height: 100vh;
-                margin: 0;
-            }
+<div class="menuContainer">
+   <div class="menuSearch" >
+      <div class="menuHead">
+         Search
+      </div>
 
-            .full-height {
-                height: 100vh;
-            }
+      <div class="menuBorder">
+         <form action="SearchBrowse.php" >
+            <input type="text" name="search" autofocus />
+            <input type="submit" value="Search" class="button fullWidth" />
+         </form>
+      </div>
+   </div>
 
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
+   <nav class="IsDesktop">
+      <div class="menuHead">
+         Browse
+      </div>
 
-            .position-ref {
-                position: relative;
-            }
+      <div class="menuBorder">
 
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
+         <a href='SearchBrowse.php?catID=5&catName=ASP.NET' class='menuitem'>ASP.NET</a><br />
+ <a href='SearchBrowse.php?catID=9&catName=JavaScript' class='menuitem'>JavaScript</a><br />
+ <a href='SearchBrowse.php?catID=2&catName=MySQL' class='menuitem'>MySQL</a><br />
+ <a href='SearchBrowse.php?catID=1&catName=PHP' class='menuitem'>PHP</a><br />
+ <a href='SearchBrowse.php?catID=6&catName=Regular%20Expressions' class='menuitem'>Regular Expressions</a><br />
+ <a href='SearchBrowse.php?catID=4&catName=SQL' class='menuitem'>SQL</a><br />
+ <a href='SearchBrowse.php?catID=3&catName=Web%20Usability' class='menuitem'>Web Usability</a><br />
+ 
+      </div>
+   </nav>
+</div>
 
-            .content {
-                text-align: center;
-            }
+<!--End menu include -->
+         </div>
+         <!-- start dynamic content -->
+         <div id="pageContent">
+            
 
-            .title {
-                font-size: 84px;
-            }
+                     <div class="bookSimple">                
+                        <a class="booktitle" href="ProductPage.php?isbn=1491914912"> Learning JavaScript: JavaScript Essentials for Modern Application Development </a> <br />
+                  
+                        <a href="ProductPage.php?isbn=1491914912"> 
+                           <img class="Book" alt="Learning JavaScript: JavaScript Essentials for Modern Application Development" 
+                              src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/bookimages/1491914912.01.THUMBZZZ.jpg"> 
+                        </a> 
+                     
+                        <p>This is an exciting time to learn JavaScript. Now that the latest JavaScript specification&#8212;ECMAScript 6.0 (ES6)&#8212;has been finalized, learning how to develop high-quality applications with this language is easier and more satisfying than 
+                        <a href="ProductPage.php?isbn=1491914912">more...</a> 
+                     </div>                  
 
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 12px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
+	                     <div class="bookSimple">                
+                        <a class="booktitle" href="ProductPage.php?isbn=059600916X"> Programming ASP.NET </a> <br />
+                  
+                        <a href="ProductPage.php?isbn=059600916X"> 
+                           <img class="Book" alt="Programming ASP.NET" 
+                              src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/059600916X.01.THUMBZZZ.jpg"> 
+                        </a> 
+                     
+                        <p>Suitable for most any programmer who wants to master ASP.NET with an eye toward real-world development, <em>Programming ASP.NET</em> is an excellent resource that mixes good coverage of APIs with actual  programming techniques and advice using Vis 
+                        <a href="ProductPage.php?isbn=059600916X">more...</a> 
+                     </div>                  
 
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a>
-                    @endauth
-                </div>
-            @endif
+	                     <div class="bookSimple">                
+                        <a class="booktitle" href="ProductPage.php?isbn=0596528124"> Mastering Regular Expressions   </a> <br />
+                  
+                        <a href="ProductPage.php?isbn=0596528124"> 
+                           <img class="Book" alt="Mastering Regular Expressions  " 
+                              src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/0596528124.01.THUMBZZZ.jpg"> 
+                        </a> 
+                     
+                        <p>Regular expressions are an extremely powerful tool for manipulating  text and data. They are now standard features in a wide range of  languages and popular tools, including Perl, Python, Ruby, Java, VB.NET  and C# (and any language using the .NET 
+                        <a href="ProductPage.php?isbn=0596528124">more...</a> 
+                     </div>                  
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+	      
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
-    </body>
-</html>
+         </div> 
+         <!-- end dynamic content -->
+
+         <!--Begin footer include -->
+   @include('util.footer')
+
