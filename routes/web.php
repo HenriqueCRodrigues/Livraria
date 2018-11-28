@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'BookController@index');
+Route::post('/list-books', 'BookController@searchBooks')->name('buscarLivros');
+Route::get('/show-book/ISBN={ISBN}', 'BookController@getBook')->name('exibirLivro');
