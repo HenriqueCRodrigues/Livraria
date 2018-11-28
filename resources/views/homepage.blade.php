@@ -11,8 +11,11 @@
       <div class="menuHead">
          Search
       </div>
+       @include('util.searchForm')
 
-      <div class="menuBorder">
+       @include('util.sidebar', ['categories'])
+
+       <div class="menuBorder">
          <form method="POST" action="{{route('buscarLivros')}}" >
              @csrf
             <input type="text" name="search" autofocus />

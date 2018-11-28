@@ -16,14 +16,14 @@
        @include('util.searchForm')
    </div>
 
-      @include('util.sidebar', ['categories' => 'categories'])
+      @include('util.sidebar', ['categories'])
 </div>
 
 <!--End menu include -->
          </div>
          <!-- start dynamic content -->
          <div id="pageContent">
-            
+
 <!-- start page content *************** -->
 
 
@@ -59,9 +59,9 @@
       <div> <b>Publisher:</b>{{$book->publisher}}</div>
       <div>  <b>Pages:</b> {{$book->pages}}</div>
       <div> <b>Edition:</b> {{$book->edition}}</div>
-   </div> 
+   </div>
 
-   <a href="ShoppingCart.php?addISBN=0596528124">
+   <a href="{{route('carrinho')}}">
       <img class="addToCart" src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/add-to-shopping-cart-blue.gif"
            alt="Add to cart" title="Add to cart" ></a>
 
@@ -71,9 +71,9 @@
    <a href="ShoppingCart.php?addISBN=0596528124">
       <img class="addToCart"  src="http://yorktown.cbe.wwu.edu/sandvig/mis314/assignments/bookstore/images/add-to-shopping-cart-blue.gif"  alt="Add to cart" title="Add to cart" >
    </a>
-   
+
 <!-- end page content *************** -->
-         </div> 
+         </div>
          <!-- end dynamic content -->
 
          <!--Begin footer include -->

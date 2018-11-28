@@ -16,7 +16,7 @@
    @include('util.searchForm')     
    </div>
 
-   @include('util.sidebar', ['categories' => 'categories'])  
+   @include('util.sidebar', ['categories'])
 </div>
 
 <!--End menu include -->

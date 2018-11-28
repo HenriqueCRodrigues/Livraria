@@ -29,7 +29,9 @@ class BookController extends Controller
     {
         $book = BookDescription::where('ISBN', '=', $id)->with('authors')->first();
 
-        return view('productPage', compact('book'));
+        $categories = BookCategory::orderBy('CategoryName', 'asc')->get();
+
+        return view('productPage', compact('book', 'categories'));
     }
 
     public function getBooksByAuthor(Request $request)
