@@ -15,7 +15,9 @@ class CartController extends Controller
         $qtyAll = 0;
 
         if ($cart) {
-            $carts = json_decode($cart);
+            $carts = json_decode($cart)->order;
+            $qtyAll = json_decode($cart)->qtyAll;
+
         }
 
         $categories = BookCategory::orderBy('CategoryName', 'asc')->get();
