@@ -18,5 +18,12 @@ Route::prefix('books')->group(function () {
     Route::get('/show/ISBN={ISBN}', 'BookController@getBook')->name('exibirLivro');
     Route::get('/list-by-author/{id}', 'BookController@getBooksByAuthor')->name('buscarLivrosPorAuthor');
     Route::get('/list-by-category/{id}/{name}', 'BookController@getBooksByCategory')->name('buscarLivrosPorCategoria');
-
 });
+
+Route::prefix('cart')->group(function () {
+    Route::get('/', 'CartController@index')->name('carrinho');
+    Route::get('/add/{ISBN}', 'CartController@add')->name('carrinhoAdicionar');
+    Route::get('/delete/{ISBN}', 'CartController@delete')->name('carrinhoRemover');
+});
+
+

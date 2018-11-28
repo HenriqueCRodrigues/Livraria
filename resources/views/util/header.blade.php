@@ -17,7 +17,7 @@
    </div>
    <div class="utilities IsDesktop">
       <map name="utilities">
-         <area href="ShoppingCart.php" shape="rect" coords="0,0,104,22" alt="Shopping Cart" />
+         <area href="{{route('carrinho')}}" shape="rect" coords="0,0,104,22" alt="Shopping Cart" />
          <area href="checkout.php" shape="rect" coords="105,0,216,22" alt="Your Account" />
       </map>
       <img src="/img/shoppingcart.jpg"
@@ -28,7 +28,7 @@
          <span class="about" >About this Sample Site</span></a>
    </div>
    <div class="mobileLinks IsMobile">
-      <a href="ShoppingCart.php">Cart</a>
+      <a href="{{route('carrinho')}}">Cart</a>
       <a href="checkout01.php">Account</a>           
       <a href="about.php">About</a>     
    </div>        
