@@ -92,4 +92,32 @@ class CartController extends Controller
         $categories = BookCategory::orderBy('CategoryName', 'asc')->get();
         return view('shoppingCart', compact('categories', 'carts', 'qtyAll'));
     }
+
+    public function checkout()
+    {
+        $cart = isset($_COOKIE['cart']) ? $_COOKIE['cart'] : null;
+        $qtyAll = 0;
+
+        if ($cart) {
+            $carts = json_decode($cart, true)['order'];
+            $qtyAll = json_decode($cart, true)['qtyAll'];
+        }
+
+        $categories = BookCategory::orderBy('CategoryName', 'asc')->get();
+        return view('checkout', compact('categories', 'carts', 'qtyAll'));
+    }
+
+    public function accountCheckout()
+    {
+        $cart = isset($_COOKIE['cart']) ? $_COOKIE['cart'] : null;
+        $qtyAll = 0;
+
+        if ($cart) {
+            $carts = json_decode($cart, true)['order'];
+            $qtyAll = json_decode($cart, true)['qtyAll'];
+        }
+
+        $categories = BookCategory::orderBy('CategoryName', 'asc')->get();
+        return view('checkout02', compact('categories', 'carts', 'qtyAll'));
+    }
 }

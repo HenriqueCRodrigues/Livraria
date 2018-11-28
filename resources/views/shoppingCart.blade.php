@@ -65,7 +65,7 @@
         <div class="cartIcons">
             <a href="{{route('inicio')}}"> <img border="0" src="/img/continue-shopping.gif" width="121" height="19"
                                       alt="Continue shopping"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="checkout.php"> <img border="0" src="/img/proceed-to-checkout.gif" width="183" height="31"
+            <a href="{{route('procederCompra')}}"> <img border="0" src="/img/proceed-to-checkout.gif" width="183" height="31"
                                          alt="Proceed to checkout"></a>
         </div>
 

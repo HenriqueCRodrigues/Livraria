@@ -9,14 +9,15 @@
 <p class="pageTitle2">Buying online is quick and easy!</p>
 <p class="pageTitle2">  
    Your cart is empty.</p>
-   <form method="post" action="checkout02.php" autocomplete="on" class="myForm">
+   <form method="post" action="{{route('informarDados')}}" autocomplete="on" class="myForm">
       <div class="cartIcons">
       <div class="formGroup">
          <label for="email">Email:</label>
          <input type="email" name="email" id="email" autofocus required placeholder="Email"  />
       </div>
       <div class="formGroup">
-           <label> </label>
+           <label>
+           </label>
          <input type="image" src="/img/proceed-to-checkout.gif" alt="Proceed to checkout" class="inputImage" />
       </div>
       </div>

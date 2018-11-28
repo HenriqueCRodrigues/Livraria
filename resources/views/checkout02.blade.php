@@ -10,7 +10,7 @@
 
 <div class="pageTitle">Shipping Information</div>
 
-<p class='centeredNotice'>New Customer - Please provide your shipping address.   </p><br>
+<p class='centeredNotice'>New Customer - Please provide your shipping address.</p><br>
    <form method="post" action="checkout03.php" autocomplete="on" class="myForm">
 
       <div class="formGroup">

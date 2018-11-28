@@ -24,6 +24,6 @@ Route::prefix('cart')->group(function () {
     Route::get('/', 'CartController@index')->name('carrinho');
     Route::get('/add/{ISBN}', 'CartController@add')->name('carrinhoAdicionar');
     Route::get('/delete/{ISBN}', 'CartController@delete')->name('carrinhoRemover');
+    Route::get('/checkout', 'CartController@checkout')->name('procederCompra');
+    Route::get('/accountCheckout', 'CartController@accountCheckout')->name('informarDados');
 });
-
-
