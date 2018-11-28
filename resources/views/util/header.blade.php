@@ -11,7 +11,7 @@
 
 <header>
    <div class="logo">
-      <a href="index.php">
+      <a href="{{route('inicio')}}">
          <img src="/img/logo.png"
               alt="GeekBooks"></a>
    </div>

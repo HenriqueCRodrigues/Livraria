@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'BookController@index');
+Route::get('/', 'BookController@index')->name('inicio');
 
 Route::prefix('books')->group(function () {
     Route::post('/lists', 'BookController@searchBooks')->name('buscarLivros');
