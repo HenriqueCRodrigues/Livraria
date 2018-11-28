@@ -10,7 +10,9 @@ use Illuminate\Http\Request;
 class BookController extends Controller
 {
     public function index() {
-        return view('homepage');
+        $categories = BookCategory::orderBy('CategoryName', 'asc')->get();
+
+        return view('homepage', compact('categories')); 
     }
 
     public function searchBooks(Request $request)
@@ -57,9 +59,7 @@ class BookController extends Controller
 
 
         return view('listBookBy', compact('books', 'valueRequest', 'categories'));
-
-
     }
 
-
 }
+

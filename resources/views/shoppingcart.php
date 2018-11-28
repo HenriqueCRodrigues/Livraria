@@ -15,23 +15,7 @@
            @include('util.searchForm')
   </div>
 
-   <nav class="IsDesktop">
-      <div class="menuHead">
-         Browse
-      </div>
-
-      <div class="menuBorder">
-
-         <a href='SearchBrowse.php?catID=5&catName=ASP.NET' class='menuitem'>ASP.NET</a><br />
- <a href='SearchBrowse.php?catID=9&catName=JavaScript' class='menuitem'>JavaScript</a><br />
- <a href='SearchBrowse.php?catID=2&catName=MySQL' class='menuitem'>MySQL</a><br />
- <a href='SearchBrowse.php?catID=1&catName=PHP' class='menuitem'>PHP</a><br />
- <a href='SearchBrowse.php?catID=6&catName=Regular%20Expressions' class='menuitem'>Regular Expressions</a><br />
- <a href='SearchBrowse.php?catID=4&catName=SQL' class='menuitem'>SQL</a><br />
- <a href='SearchBrowse.php?catID=3&catName=Web%20Usability' class='menuitem'>Web Usability</a><br />
- 
-      </div>
-   </nav>
+          @include('util.sidebar', ['categories' => 'categories'])
 </div>
 
 <!--End menu include -->
