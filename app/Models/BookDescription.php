@@ -19,8 +19,17 @@ class BookDescription extends Model
         "pages"
     ];
 
+    public function getDiscountAttribute()
+    {
+        return $this->discount = number_format($this->price * 0.2, 2, '.', ',');
+    }
 
-    public function author() {
+    public function getDiscountValueAttribute()
+    {
+        return number_format($this->price - $this->discount, 2, '.', ',');
+    }
+
+    public function authors() {
         return $this->hasManyThrough(
             BookAuthor::class,
             BookAuthorBook::class,
@@ -28,7 +37,7 @@ class BookDescription extends Model
             'AuthorID', // Foreign key on posts table...
             'ISBN', // Local key on countries table...
             'AuthorID' // Local key on users table...
-        )->first();
+        );
     }
 
     public function category() {

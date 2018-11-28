@@ -27,15 +27,9 @@
       </div>
 
       <div class="menuBorder">
-
-         <a href='SearchBrowse.php?catID=5&catName=ASP.NET' class='menuitem'>ASP.NET</a><br />
-         <a href='SearchBrowse.php?catID=9&catName=JavaScript' class='menuitem'>JavaScript</a><br />
-         <a href='SearchBrowse.php?catID=2&catName=MySQL' class='menuitem'>MySQL</a><br />
-         <a href='SearchBrowse.php?catID=1&catName=PHP' class='menuitem'>PHP</a><br />
-         <a href='SearchBrowse.php?catID=6&catName=Regular%20Expressions' class='menuitem'>Regular Expressions</a><br />
-         <a href='SearchBrowse.php?catID=4&catName=SQL' class='menuitem'>SQL</a><br />
-         <a href='SearchBrowse.php?catID=3&catName=Web%20Usability' class='menuitem'>Web Usability</a><br />
- 
+          @foreach($categories as $category)
+              <a href='{{route('buscarLivrosPorCategoria', ['id' => $category->CategoryID, 'name' => $category->CategoryName])}}' class='menuitem'>{{$category->CategoryName}}</a><br />
+          @endforeach
       </div>
    </nav>
 </div>
@@ -55,10 +49,14 @@
                     @foreach ($books as $book)
                          <div class="bookSimple">
 
-                             <a class="booktitle" href="ProductPage.php?isbn=1491918667">  {{$book->title}} </a>
+                             <a class="booktitle" href="{{route('exibirLivro', ['ISBN' => $book->ISBN])}}">  {{$book->title}} </a>
                              <br />
-                             <span class="authors">by <a href='SearchBrowse.php?search=Nixon'>AUTHOR</a></span><br />
-                             <a href="ProductPage.php?isbn=1491918667">
+                             <span class="authors">by
+                                 @foreach($book->authors as $index => $author)
+                                    <a href='{{route('buscarLivrosPorAuthor', ['id' => $author->AuthorID])}}'>{{$author->fullName}}</a>@if($index < count($book->authors)-1), @endif
+                                 @endforeach
+                             </span><br />
+                             <a href="{{route('exibirLivro', ['ISBN' => $book->ISBN])}}">
                                  <img class="Book" src="https://baldochi.unifei.edu.br/COM222/trabfinal/imagens/{{$book->ISBN}}.01.THUMBZZZ.jpg">
                              </a>
 

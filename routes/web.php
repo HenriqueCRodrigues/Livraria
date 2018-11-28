@@ -12,5 +12,11 @@
 */
 
 Route::get('/', 'BookController@index');
-Route::post('/list-books', 'BookController@searchBooks')->name('buscarLivros');
-Route::get('/show-book/ISBN={ISBN}', 'BookController@getBook')->name('exibirLivro');
+
+Route::prefix('books')->group(function () {
+    Route::post('/lists', 'BookController@searchBooks')->name('buscarLivros');
+    Route::get('/show/ISBN={ISBN}', 'BookController@getBook')->name('exibirLivro');
+    Route::get('/list-by-author/{id}', 'BookController@getBooksByAuthor')->name('buscarLivrosPorAuthor');
+    Route::get('/list-by-category/{id}/{name}', 'BookController@getBooksByCategory')->name('buscarLivrosPorCategoria');
+
+});

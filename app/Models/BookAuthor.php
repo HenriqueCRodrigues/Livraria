@@ -11,9 +11,14 @@ class BookAuthor extends Model
 
     protected $fillable = [
         "AuthorID",
-        "strFName",
-        "strLName"
+        "nameF",
+        "nameL"
     ];
+
+    public function getFullNameAttribute()
+    {
+        return $this->nameF." ".$this->nameF;
+    }
 
     public function books() {
         return $this->hasManyThrough(
