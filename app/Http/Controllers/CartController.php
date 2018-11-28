@@ -15,9 +15,8 @@ class CartController extends Controller
         $qtyAll = 0;
 
         if ($cart) {
-            $carts = json_decode($cart)->order;
-            $qtyAll = json_decode($cart)->qtyAll;
-
+            $carts = json_decode($cart, true)['order'];
+            $qtyAll = json_decode($cart, true)['qtyAll'];
         }
 
         $categories = BookCategory::orderBy('CategoryName', 'asc')->get();
@@ -26,8 +25,8 @@ class CartController extends Controller
 
     public function add($ISBN)
     {
-        $carts = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'])->order : null;
-        $qtyAll = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'])->qtyAll : 0;
+        $carts = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true)['order'] : null;
+        $qtyAll = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true)['qtyAll'] : 0;
 
         if ($ISBN) {
             $book = BookDescription::where('ISBN', '=', $ISBN)->first();
@@ -42,14 +41,12 @@ class CartController extends Controller
 
                 if (!$carts) {
                     $carts[] = $insert;
-                    $carts = json_encode($carts);
-                    $carts = json_decode($carts);
                 } else {
                     $add = false;
-                    foreach ($carts as $cart) {
-                        if ($cart->ISBN == $insert['ISBN']) {
-                            $cart->qty += 1;
-                            $cart->total += $book->price;
+                    foreach ($carts as $index => $cart) {
+                        if ($cart['ISBN'] == $insert['ISBN']) {
+                            $carts[$index]['qty'] += 1;
+                            $carts[$index]['total'] += $book->price;
                             $add = true;
                             break;
                         }
@@ -71,17 +68,17 @@ class CartController extends Controller
 
     public function delete($ISBN)
     {
-        $carts = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'])->order : null;
-        $qtyAll = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'])->qtyAll : 0;
+        $carts = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true)['order'] : null;
+        $qtyAll = isset($_COOKIE['cart']) ? json_decode($_COOKIE['cart'], true)['qtyAll'] : 0;
 
         $book = BookDescription::where('ISBN', '=', $ISBN)->first();
-        if ($book && $carts) {
 
+        if ($book && $carts) {
             foreach ($carts as $index => $cart) {
-                if($cart->qty > 1) {
-                    $carts[$index]->qty -= 1;
-                    $carts[$index]->total -= $book->price;
-                } else {
+                if($cart['qty'] > 1 && $cart['ISBN'] == $book->ISBN) {
+                    $carts[$index]['qty'] -= 1;
+                    $carts[$index]['total'] -= $book->price;
+                } else if($cart['ISBN'] == $book->ISBN && $cart['qty'] == 1) {
                     unset($carts[$index]);
                 }
 

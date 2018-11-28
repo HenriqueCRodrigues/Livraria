@@ -43,19 +43,19 @@
                 </tr>
                 @foreach($carts as $cart)
                     <tr>
-                        <td><a class="booktitle" target="_blank" href="{{route('exibirLivro', ['ISBN' => $cart->ISBN])}}">{{$cart->title}}</a></td>
+                        <td><a class="booktitle" target="_blank" href="{{route('exibirLivro', ['ISBN' => $cart['ISBN']])}}">{{$cart['title']}}</a></td>
                         <td>
-                            {{$cart->qty}}
+                            {{$cart['qty']}}
                         </td>
                         <td class="bookPrice">
-                            ${{$cart->price}}
+                            ${{$cart['price']}}
                         </td>
                         <td class="bookPrice">
-                            ${{$cart->total}}
+                            ${{$cart['total']}}
                         </td>
                         <td style="text-align:center">
-                            <a href="{{route('carrinhoAdicionar', ['ISBN' => $cart->ISBN])}}">Add</a><br>
-                            <a href="{{route('carrinhoRemover', ['ISBN' => $cart->ISBN])}}">Remove</a>
+                            <a href="{{route('carrinhoAdicionar', ['ISBN' => $cart['ISBN']])}}">Add</a><br>
+                            <a href="{{route('carrinhoRemover', ['ISBN' => $cart['ISBN']])}}">Remove</a>
                         </td>
                     </tr>
                 @endforeach
