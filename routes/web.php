@@ -25,5 +25,9 @@ Route::prefix('cart')->group(function () {
     Route::get('/add/{ISBN}', 'CartController@add')->name('carrinhoAdicionar');
     Route::get('/delete/{ISBN}', 'CartController@delete')->name('carrinhoRemover');
     Route::get('/checkout', 'CartController@checkout')->name('procederCompra');
-    Route::get('/accountCheckout', 'CartController@accountCheckout')->name('informarDados');
+    Route::post('/accountCheckout', 'CartController@accountCheckout')->name('informarDados');
+    Route::post('/finalize', 'CartController@finalize')->name('finalizarCompra');
 });
+
+Route::view('sobre', 'about')->name('sobre');
+Route::get('conta', 'AccountController@index')->name('conta');
