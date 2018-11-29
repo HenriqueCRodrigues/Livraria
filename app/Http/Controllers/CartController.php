@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\NewOrder;
 use App\Models\BookCategory;
 use App\Models\BookCustomer;
 use App\Models\BookDescription;
@@ -9,6 +10,7 @@ use App\Models\BookOrder;
 use App\Models\BookOrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
@@ -181,6 +183,8 @@ class CartController extends Controller
             "order" => null,
             "qtyAll" => null
         ]), time() + 60 * 24 * 3, '/', NULL, 0);   //3 Dias
+
+        Mail::to($customer->email)->send(new NewOrder());
 
         return redirect(route('conta'));
     }
