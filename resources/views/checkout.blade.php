@@ -7,8 +7,6 @@
 
         <div class="pageTitle">Your Account</div>
         <p class="pageTitle2">Buying online is quick and easy!</p>
-        <p class="pageTitle2">
-            Your cart is empty.</p>
         <form method="post" action="{{route('informarDados')}}" autocomplete="on" class="myForm">
             @csrf
             <div class="cartIcons">
