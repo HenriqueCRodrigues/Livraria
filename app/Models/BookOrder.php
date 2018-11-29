@@ -17,4 +17,9 @@ class BookOrder extends Model
     public $timestamps = false;
 
     protected $primaryKey = 'orderID';
+
+    public function items()
+    {
+        return $this->hasMany(BookOrderItem::class, 'orderID');
+    }
 }

@@ -16,4 +16,9 @@ class BookOrderItem extends Model
     ];
 
     public $timestamps = false;
+
+    public function book()
+    {
+        return $this->belongsTo(BookDescription::class, 'ISBN', 'ISBN');
+    }
 }

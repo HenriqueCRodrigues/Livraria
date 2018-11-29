@@ -23,4 +23,9 @@ class BookCustomer extends Model
     public $timestamps = false;
 
     protected $primaryKey = 'custID';
+
+    public function orders()
+    {
+        return $this->hasMany(BookOrder::class, 'custID');
+    }
 }
