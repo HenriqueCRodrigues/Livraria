@@ -29,5 +29,5 @@ Route::prefix('cart')->group(function () {
     Route::post('/finalize', 'CartController@finalize')->name('finalizarCompra');
 });
 
-Route::view('sobre', 'about')->name('sobre');
+Route::get('sobre', 'AccountController@about')->name('sobre');
 Route::get('conta', 'AccountController@index')->name('conta');

@@ -4,7 +4,7 @@
    </div>
     <div class="footerLinks">
         <a class="footerLink" href="{{route('inicio')}}">Home</a>&nbsp;
-        <a class="footerLink" href="about.php">About this Site</a> 
+        <a class="footerLink" href="{{route('sobre')}}">About this Site</a>
         <a class="footerLink" href="https://cse.wwu.edu/cs/internet-studies-center-isc">Internet Studies Center</a>
     </div>
 </footer>

@@ -63,6 +63,5 @@ class BookController extends Controller
 
         return view('listBookBy', compact('books', 'valueRequest', 'categories'));
     }
-
 }
 
