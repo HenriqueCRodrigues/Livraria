@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\BookCategory;
+use App\Models\BookCustomer;
 use App\Models\BookDescription;
+use App\Models\BookOrder;
+use App\Models\BookOrderItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cookie;
 
@@ -58,7 +61,7 @@ class CartController extends Controller
                 }
 
                 $qtyAll += 1;
-                setcookie('cart', json_encode(["order" => $carts, "qtyAll" => $qtyAll]), time() + 60 * 24 * 3, '/', NULL, 0 );  //3 Dias
+                setcookie('cart', json_encode(["order" => $carts, "qtyAll" => $qtyAll]), time() + 60 * 24 * 3, '/', NULL, 0);  //3 Dias
             }
         }
 
@@ -75,17 +78,17 @@ class CartController extends Controller
 
         if ($book && $carts) {
             foreach ($carts as $index => $cart) {
-                if($cart['qty'] > 1 && $cart['ISBN'] == $book->ISBN) {
+                if ($cart['qty'] > 1 && $cart['ISBN'] == $book->ISBN) {
                     $carts[$index]['qty'] -= 1;
                     $carts[$index]['total'] -= $book->price;
-                } else if($cart['ISBN'] == $book->ISBN && $cart['qty'] == 1) {
+                } else if ($cart['ISBN'] == $book->ISBN && $cart['qty'] == 1) {
                     unset($carts[$index]);
                 }
 
             }
 
             $qtyAll -= 1;
-            setcookie('cart', json_encode(["order" => $carts, "qtyAll" => $qtyAll]), time() + 60 * 24 * 3, '/', NULL, 0 );   //3 Dias
+            setcookie('cart', json_encode(["order" => $carts, "qtyAll" => $qtyAll]), time() + 60 * 24 * 3, '/', NULL, 0);   //3 Dias
         }
 
 
@@ -107,7 +110,7 @@ class CartController extends Controller
         return view('checkout', compact('categories', 'carts', 'qtyAll'));
     }
 
-    public function accountCheckout()
+    public function accountCheckout(Request $request)
     {
         $cart = isset($_COOKIE['cart']) ? $_COOKIE['cart'] : null;
         $qtyAll = 0;
@@ -118,6 +121,67 @@ class CartController extends Controller
         }
 
         $categories = BookCategory::orderBy('CategoryName', 'asc')->get();
-        return view('checkout02', compact('categories', 'carts', 'qtyAll'));
+
+        $customer = BookCustomer::where('email', '=', $request->get('email'))->first();
+
+        if (!$customer) {
+            $customer = new BookCustomer();
+            $customer->email = $request->get('email');
+        }
+
+        return view('checkout02', compact('categories', 'carts', 'qtyAll', 'customer'));
+    }
+
+    public function finalize(Request $request)
+    {
+        $customer = BookCustomer::where('custID', '=', $request->get('custID'))->first();
+
+        if (!$customer) {
+            $customer = new BookCustomer();
+        }
+
+        $customer->fill($request->only([
+            "fname",
+            "lname",
+            "email",
+            "street",
+            "city",
+            "state",
+            "zip",
+        ]));
+
+        $customer->save();
+
+        setcookie('customer', json_encode($customer), time() + 60 * 24 * 3, '/', NULL, 0);   //3 Dias
+
+        $order = new BookOrder();
+        $order->custID = $customer->custID;
+        $order->orderdate = time();
+        $order->save();
+
+
+        $cart = isset($_COOKIE['cart']) ? $_COOKIE['cart'] : null;
+        $qtyAll = 0;
+
+        if ($cart) {
+            $carts = json_decode($cart, true)['order'];
+            $qtyAll = json_decode($cart, true)['qtyAll'];
+        }
+
+        foreach ($carts as $c) {
+            BookOrderItem::create([
+                'orderID' => $order->orderID,
+                'ISBN' => $c['ISBN'],
+                'qty' => $c['qty'],
+                'price' => $c['price'],
+            ]);
+        }
+
+        setcookie('cart', json_encode([
+            "order" => null,
+            "qtyAll" => null
+        ]), time() + 60 * 24 * 3, '/', NULL, 0);   //3 Dias
+
+        return redirect(route('conta'));
     }
 }

@@ -25,8 +25,8 @@
         <!-- start page content *************** -->
 
 
-        <p class="pageTitle2"> {{$qtyAll}} items in your cart </p>
         @if($qtyAll)
+            <p class="pageTitle2"> {{$qtyAll}} items in your cart </p>
             <table id="cart">
                 <tbody>
                 <tr>
@@ -61,17 +61,19 @@
                 @endforeach
                 </tbody>
             </table>
+        @else
+            <p class="pageTitle2"> 0 items in your cart </p>
         @endif
+
         <div class="cartIcons">
             <a href="{{route('inicio')}}"> <img border="0" src="/img/continue-shopping.gif" width="121" height="19"
-                                      alt="Continue shopping"/></a>&nbsp;&nbsp;&nbsp;&nbsp;
-            <a href="{{route('procederCompra')}}"> <img border="0" src="/img/proceed-to-checkout.gif" width="183" height="31"
-                                         alt="Proceed to checkout"></a>
+                                                alt="Continue shopping"/></a>&nbsp;&nbsp;
+            @if($qtyAll)
+                &nbsp;&nbsp;
+                <a href="{{route('procederCompra')}}"> <img border="0" src="/img/proceed-to-checkout.gif" width="183" height="31"
+                                                            alt="Proceed to checkout"></a>
+            @endif
         </div>
-
-
-        <p id="shipping">* Shipping is $3.49 for the first book and $.99 for each additional book. To assure
-            reliable delivery and to keep your costs low we send all books via UPS ground. </p>
 
 
         <!-- end page content *************** -->
