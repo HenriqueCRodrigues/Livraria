@@ -17,10 +17,30 @@
                             </a>
 
                             <p>{!! str_limit($item->book->description, 200, '...') !!} <a href="{{route('exibirLivro', ['ISBN' => $item->book->ISBN])}}">more...</a>
+                            <br><br>
+                            <div>
+                                <span class="priceLabel"><b>Qty:</b></span>
+                                <span class="bookPriceB">{{$item->qty}}</span>
+                                <br>
+                                <span class="priceLabel"><b>Price:</b></span>
+                                <span class="bookPriceB">${{$item->price}}</span>
+                                <br>
+                                <span class="priceLabel"><b>Price Total:</b></span>
+                                <span class="bookPriceB">${{$item->total}}</span>
+                                <br>
+                            </div>
                         </div>
                     @endforeach
                 </div>
             @endforeach
+            <div id="pageContent" style="background-color: #fff; width: 97.5%">
+                <span class="priceLabel"><b>Qty Total:</b></span>
+                <span class="bookPriceB">0</span>
+                <br>
+                <span class="priceLabel"><b>Price Total:</b></span>
+                <span class="bookPriceB">$0</span>
+                <br>
+            </div>
         @else
             <form method="post" action="{{route('login')}}" autocomplete="on" class="myForm">
                 @csrf

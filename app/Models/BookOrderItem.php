@@ -17,6 +17,11 @@ class BookOrderItem extends Model
 
     public $timestamps = false;
 
+    public function getTotalAttribute()
+    {
+        return $this->qty*$this->price;
+    }
+
     public function book()
     {
         return $this->belongsTo(BookDescription::class, 'ISBN', 'ISBN');
