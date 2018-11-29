@@ -19,7 +19,7 @@
                 <div class="formGroup">
                     <label>
                     </label>
-                    <input type="image" src="/img/proceed-to-checkout.gif" alt="Proceed to checkout" class="inputImage"/>
+                    <input type="image" src="/img/proceed-to-checkout2.png" alt="Proceed to checkout" class="inputImage"/>
                 </div>
             </div>
         </form>
