@@ -287,18 +287,17 @@ input.inputImage {
    border-radius: 6px;
 }
 input.button {
-   background-color:#eeeeee; 
-   background-image: -webkit-linear-gradient(top, #eeeeee, #cccccc);
-   background-image: linear-gradient(top, #eeeeee, #cccccc); 
+   color: white;
+   border-radius: 4px;
+   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+   background: rgb(28, 184, 65);
    border: 1px solid #ccc;
    width: 80%; 
    text-align: center;
    margin:5px;
 }
 input.button:hover {
-   background-color: #ddd;
-   background-image: -webkit-linear-gradient(top, #dddddd, #bbbbbb);
-   border: 1px solid #bbb;
+   background: rgb(24, 153, 54);
 }
 
 .returnButton {

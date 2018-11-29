@@ -66,11 +66,11 @@
         @endif
 
         <div class="cartIcons">
-            <a href="{{route('inicio')}}"> <img border="0" src="/img/continue-shopping.gif" width="121" height="19"
+            <a href="{{route('inicio')}}"> <img border="0" src="/img/continue-shopping.png" width="180" height="30"
                                                 alt="Continue shopping"/></a>&nbsp;&nbsp;
             @if($qtyAll)
                 &nbsp;&nbsp;
-                <a href="{{route('procederCompra')}}"> <img border="0" src="/img/proceed-to-checkout.gif" width="183" height="31"
+                <a href="{{route('procederCompra')}}"> <img border="0" src="/img/proceed-to-checkout.png" width="180" height="30"
                                                             alt="Proceed to checkout"></a>
             @endif
         </div>
