@@ -11,8 +11,9 @@ class BookController extends Controller
 {
     public function index() {
         $categories = BookCategory::orderBy('CategoryName', 'asc')->get();
+        $randomBooks = BookDescription::limit(4)->inRandomOrder()->get();
 
-        return view('homepage', compact('categories')); 
+        return view('homepage', compact('categories', 'randomBooks'));
     }
 
     public function searchBooks(Request $request)
