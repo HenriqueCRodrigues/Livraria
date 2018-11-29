@@ -31,3 +31,5 @@ Route::prefix('cart')->group(function () {
 
 Route::get('sobre', 'AccountController@about')->name('sobre');
 Route::get('conta', 'AccountController@index')->name('conta');
+Route::post('login', 'AccountController@login')->name('login');
+Route::get('logout', 'AccountController@logout')->name('logout');
