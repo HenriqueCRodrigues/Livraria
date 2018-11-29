@@ -18,7 +18,7 @@
    <div class="utilities IsDesktop">
       <map name="utilities">
          <area href="{{route('carrinho')}}" shape="rect" coords="0,0,104,22" alt="Shopping Cart" />
-         <area href="checkout.php" shape="rect" coords="105,0,216,22" alt="Your Account" />
+         <area href="cart/checkout" shape="rect" coords="105,0,216,22" alt="Your Account" />
       </map>
       <img src="/img/shoppingcart.jpg"
            usemap="#utilities" style="height:22px ;width:216px; border:0;" alt="shopping cart" />
