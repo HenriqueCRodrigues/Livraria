@@ -18,18 +18,18 @@
    <div class="utilities IsDesktop">
       <map name="utilities">
          <area href="{{route('carrinho')}}" shape="rect" coords="0,0,104,22" alt="Shopping Cart" />
-         <area href="cart/checkout" shape="rect" coords="105,0,216,22" alt="Your Account" />
+         <area href="{{route('conta')}}" shape="rect" coords="105,0,216,22" alt="Your Account" />
       </map>
       <img src="/img/shoppingcart.jpg"
            usemap="#utilities" style="height:22px ;width:216px; border:0;" alt="shopping cart" />
-      <a href="about.php" style="text-decoration:none;">
+      <a href="{{ route('sobre') }}" style="text-decoration:none;">
          <img  src="/img/exclamation-clear.gif"
                alt="About this site" style="margin-left:25px; width: 20px; height: 20px;border:none;" />
          <span class="about" >About this Sample Site</span></a>
    </div>
    <div class="mobileLinks IsMobile">
       <a href="{{route('carrinho')}}">Cart</a>
-      <a href="checkout01.php">Account</a>           
-      <a href="about.php">About</a>     
+      <a href="{{route('conta')}}">Account</a>
+      <a href="{{ route('sobre') }}">About</a>
    </div>        
 </header>
