@@ -14,4 +14,6 @@ class BookOrderItem extends Model
         "qty",
         "price"
     ];
+
+    public $timestamps = false;
 }

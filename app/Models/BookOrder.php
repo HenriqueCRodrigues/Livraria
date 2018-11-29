@@ -13,4 +13,8 @@ class BookOrder extends Model
         "custID",
         "orderdate"
     ];
+
+    public $timestamps = false;
+
+    protected $primaryKey = 'orderID';
 }

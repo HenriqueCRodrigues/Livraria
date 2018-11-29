@@ -19,4 +19,8 @@ class BookCustomer extends Model
         "zip",
         "password",
     ];
+
+    public $timestamps = false;
+
+    protected $primaryKey = 'custID';
 }
